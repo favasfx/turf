@@ -50,14 +50,16 @@ function editBookings(id){
         },
         success: function(response) {
             console.log(response.data)
-            document.getElementById('delete_url').href='delete_employee_data/'+response.data.id
+            // document.getElementById('delete_url').href='delete_employee_data/'+response.data.id
             console.log(response.data)
             $('#id').val(response.data.id)
+            $('#uid').val(response.data.id)
             $('#name').val(response.data.name)
             $('#phone').val(response.data.phone)
             $('#email').val(response.data.email)
             $('#date').val(response.data.date)
             $('#time').val(response.data.time)
+            $('#status').val(response.data.status)
      
         }
     })

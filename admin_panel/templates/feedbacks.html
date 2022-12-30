@@ -19,7 +19,7 @@
         <th scope="row">{{i.id}}</th>
         <td>{{i.feedback}}</td>
         <td>{{i.current_date}}</td>
-        <td><button type="BUtton" class="btn btn-danger btn-sm btnsz cb"><span class="cbk">Cancel Booking</span></button></td>
+        <td><a href="cancel_feedback/{{i.id}}"><button type="BUtton" class="btn btn-danger btn-sm btnsz cb"><span class="cbk">Cancel Booking</span></button></a></td>
       </tr>
       {% endfor %}
       </table>

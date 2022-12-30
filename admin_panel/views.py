@@ -43,6 +43,16 @@ def service_history(request):
 
 def total_booking(request):
     obj = Bookings.objects.all()
+    if request.method == 'POST':
+            uid=request.POST['id']
+            name = request.POST['name']
+            email = request.POST['email']
+            phone = request.POST['phone']
+            date = request.POST['date']
+            time = request.POST['time']
+            status = request.POST['status']
+            # time = request.POST['time']
+            Bookings.objects.filter(id=uid).update(name=name, email = email, phone = phone, date = date, time = time, status = status  )
     return render(request,'total_booking.html',{'bookings':obj})
 
 def completed_booking(request):
@@ -57,3 +67,14 @@ def edit_bookings(request):
     #print(data.car_name)
     data={'id': datas.id,'name':datas.name,'phone':datas.phone,'email':datas.email,'date':datas.date,'time':datas.time,'status':datas.status}
     return JsonResponse({'data': data})
+
+def cancelFeedback(request,id=0):
+    print("Helloooo")
+    Feedbacks.objects.get(id=id).delete()
+    return redirect('feedbacks')
+
+def cancelBooking(request,id=0):
+    print("Helloooo")
+    Bookings.objects.get(id=id).delete()
+    return redirect('total_booking')
+

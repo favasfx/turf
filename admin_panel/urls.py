@@ -21,7 +21,11 @@ urlpatterns = [
 
     path('completed_booking', views.completed_booking,name= 'completed_booking'),
 
-    path('edit_bookings',views.edit_bookings,name='edit_bookings'),
+    path('edit_Bookings',views.edit_bookings,name='edit_bookings'),
+
+    path('cancel_feedback/<int:id>',views.cancelFeedback,name='cancel_feedback'),
+
+    path('cancel_booking/<int:id>',views.cancelBooking,name='cancel_booking')
 
 
 ]
