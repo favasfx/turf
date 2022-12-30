@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <title>Document</title>
+</head>
+<body   style="background: url(../static/images/login.jpg);">
+    <div class="login-page">
+        <div class="form">
+                 <!-- signup -->
+          <form class="register-form" method="post" action="login">
+            {% csrf_token %}
+            <input type="text" placeholder="name" required name="name" />
+            <input type="password" placeholder="password" required  name="password"/>
+            <input type="text" placeholder="email address" required name="email"/>
+            <input type="number" placeholder="phone" required name="phone"/>
+            <button type="submit">create</button>
+            <p class="message">Already registered? <a href="#">Sign In</a></p>
+          </form>
+          <!-- signin -->
+          <form class="login-form" method="post" action="signin">
+            {% csrf_token %}
+
+            <input type="text" placeholder="username" required name="username"/>
+            <input type="password" placeholder="password" name="password" required/>
+            <a href="home"><button type="submit">login</button></a>
+            <p class="message">Not registered? <a href="#">Create an account</a></p>
+          </form>
+        </div>
+      </div></body>
+
+      <script>
+        $('.message a').click(function(){
+   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+});
+      </script>
+</html>
