@@ -22,9 +22,9 @@
     {% for i in bookings %}
       <tr>
         <th scope="row">{{i.id}}</th>
-        <td>{{i.name}}</td>
-        <td>{{i.email}}</td>
-        <td>{{i.phone}}</td>
+        <td>{{i.user.name}}</td>
+        <td>{{i.user.email}}</td>
+        <td>{{i.user.phone}}</td>
         <td>{{i.date}}</td>
         <td>{{i.time}}</td>
         <td>{{i.status}}</td>
@@ -74,22 +74,12 @@
                             <option>Completed</option>
                           </select>
                         </div>
-                        <div class="form-group">
-                          <span class="form-label">Name</span>
-                          <input class="form-control" type="text" placeholder="Enter your name" name="name" id="name" required>
-                        </div>
                       </div>
                       <div class="col-sm-6">
-                        <div class="form-group">
-                          <span class="form-label">Email</span>
-                          <input class="form-control" type="email" placeholder="Enter your email" name="email" id="email" required>
-                        </div>
+
                       </div>
                     </div>
-                    <div class="form-group">
-                      <span class="form-label">Phone</span>
-                      <input class="form-control" type="tel" placeholder="Enter your phone number" name="phone" id="phone" required>
-                    </div>
+
                      <!-- <div class="form-group"> 
                       <span class="form-label">Time </span>
                       <input class="form-control" type="text" placeholder="Enter ZIP/Location" name="time">

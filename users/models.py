@@ -16,9 +16,7 @@ class Users(models.Model):
 
 
 class Bookings(models.Model):
-    name = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
-    phone = models.BigIntegerField()
+    user = models.ForeignKey(Users, on_delete=models.CASCADE)
     date = models.CharField(max_length=100)
     time = models.CharField(max_length=100)
     status = models.CharField(max_length=100)

@@ -15,5 +15,10 @@ urlpatterns = [
 
     path('signin', views.signin,name='signin'),
 
+    path('bookingstatus', views.bookingstatus,name='bookingstatus'),
+
+    path('usr_cancel_booking/<int:id>', views.usr_cancel_booking,name='usr_cancel_booking'),
+    
+
 
 ]

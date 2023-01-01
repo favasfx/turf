@@ -3,7 +3,7 @@ from users.models import Users, Bookings, Feedbacks
 
 
 
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 # Create your views here.
 def user(request):
@@ -14,14 +14,12 @@ def index(request):
 
 
 def booking(request):
+    
     if request.method == 'POST':
-        name = request.POST['name']
-        email = request.POST['email']
-        phone = request.POST['phone']
         date = request.POST['date']
         time = request.POST['time']
         # time = request.POST['time']
-        userobj = Bookings(name=name, email = email, phone = phone, date = date, time = time, status = 'Pending'  )
+        userobj = Bookings(date = date, time = time, status = "Pending", user_id = request.session['userId'])
         userobj.save()
     return render(request,'bookings.html')
 
@@ -63,3 +61,14 @@ def signin(request):
     # print(password)
     return render(request,'login.html')
 
+def bookingstatus(request):
+    session = request.session['userId']
+    print(session)
+    objpending = Bookings.objects.filter(user_id = session,status="Pending")
+    objcompleted = Bookings.objects.filter(user_id = session,status="Completed")
+    print(objcompleted)
+    return render(request,'bookingstatus.html',{'users':objpending,'completed':objcompleted})
+
+def usr_cancel_booking(request,id=0):
+    Bookings.objects.get(id=id).delete()
+    return redirect('bookingstatus')    
